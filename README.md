@@ -1,16 +1,24 @@
-# estatisticas_trello
+<h1>Estatíticas Trello</h1>
 
-A new Flutter project.
+<hr>
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Tópicos 
 
-A few resources to get you started if this is your first Flutter project:
+- [Descrição do projeto](#descrição-do-projeto)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<!-- - [Funcionalidades](#funcionalidades)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Aplicação](#aplicação)
+
+- [Executando o projeto](#executando-o-projeto)
+
+- [Observações](#observações) -->
+
+
+
+## Descrição do projeto 
+
+<p align="justify">
+A ideia do projeto surgiu da necessidade de apresentar os dados cadastrados no Trello, baseados na regra do cliente, onde o mesmo irá criar um Clipping de matérias jornalísticas, especificando veículo de origem, tipo de mídia e qual o seu impacto.
+</p>
