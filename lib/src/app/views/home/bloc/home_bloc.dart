@@ -1,8 +1,30 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:estatisticas_trello/src/model/board_model.dart';
+import 'package:estatisticas_trello/src/model/labels_model.dart';
+import 'package:estatisticas_trello/src/model/list_model.dart';
+import 'package:estatisticas_trello/src/service/api/repositories/board_repository.dart';
 import 'package:estatisticas_trello/src/service/api/repositories/card_repository.dart';
+import 'package:estatisticas_trello/src/service/api/repositories/labes_repository.dart';
+import 'package:estatisticas_trello/src/service/api/repositories/list_repository.dart';
 
-class BlocList {
+class HomeBloc {
   final cardRepository = CardRepository();
+  final listRepository = ListRepository();
+  final boardRepository = BoardRepository();
+  final labelsRepository = LabelsRepository();
+
+  Future<BoardModel> getBoardName() async {
+    return await Future<BoardModel>.value(boardRepository.getBoard());
+  }
+
+  Future<List<ListModel>> getLists() async {
+    final listsOnBoard = await listRepository.getListsOnBoard();
+    return listsOnBoard;
+  }
+
+  Future<List<LabelsModel>> getLabelsList() async {
+    final labels = await labelsRepository.getLabelsOnBoard();
+    return labels;
+  }
 
   Future<LabelsInt> getTotalLabels() async {
     final response = await cardRepository.getCardsOnBoard();
@@ -33,6 +55,7 @@ class BlocList {
         if (card.labels?[i].id == '63d32a592f36f2348afdde9f') {
           radio += 1;
         }
+
         // Tipo de Mídia
         if (card.labels?[i].id == '63d32a592f36f2348afdde9c') {
           espontanea += 1;
@@ -43,14 +66,15 @@ class BlocList {
         if (card.labels?[i].id == '63d32a592f36f2348afdde9e') {
           artigo += 1;
         }
+
         // Classificação
-        if (card.labels?[i].id == '63d32a592f36f2348afdde9c') {
+        if (card.labels?[i].id == '63d8088af08b6afb46eb7cea') {
           positiva += 1;
         }
-        if (card.labels?[i].id == '63d8281406cd8985df9d9dc8') {
+        if (card.labels?[i].id == '63d80895ddced7edfd4e3d99') {
           neutra += 1;
         }
-        if (card.labels?[i].id == '63d32a592f36f2348afdde9e') {
+        if (card.labels?[i].id == '63d80890851304be2d6e70b4') {
           negativa += 1;
         }
       }

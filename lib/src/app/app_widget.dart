@@ -1,4 +1,4 @@
-import 'package:estatisticas_trello/src/app/views/list/pages/list_page.dart';
+import 'package:estatisticas_trello/src/app/views/home/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class AppWidget extends StatelessWidget {
@@ -14,7 +14,7 @@ class AppWidget extends StatelessWidget {
       ),
       initialRoute: '/home',
       routes: {
-        '/home': (context) => const ListPage(),
+        '/home': (context) => const HomePage(),
       },
     );
   }
