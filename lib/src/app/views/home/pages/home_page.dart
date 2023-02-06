@@ -1,7 +1,6 @@
 import 'package:estatisticas_trello/src/app/views/home/bloc/home_bloc.dart';
-import 'package:estatisticas_trello/src/app/views/home/widgets/mes_btn.dart';
-import 'package:estatisticas_trello/src/app/views/home/widgets/ocorrencias_total.dart';
-import 'package:estatisticas_trello/src/app/views/home/widgets/pie_chart.dart';
+import 'package:estatisticas_trello/src/app/views/home/widgets/ocorrencias_anual_donuts.dart';
+import 'package:estatisticas_trello/src/components/text/text_styles.dart';
 import 'package:estatisticas_trello/src/model/list_model.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +36,7 @@ class _HomePageState extends State<HomePage> {
               future: homeBloc.getTotalLabels(),
               builder: (context, snapshot) {
                 final label = snapshot.data;
+
                 if (!snapshot.hasData) {
                   return const Center(
                     child: CircularProgressIndicator(),
@@ -44,8 +44,23 @@ class _HomePageState extends State<HomePage> {
                 } else {
                   return Column(
                     children: [
-                      OcorrenciasTotal(label: label),
-                      const SizedBox(height: 20),
+                      // OcorrenciasTotal(label: label),
+                      Card(
+                        elevation: 10,
+                        child: SizedBox(
+                          width: double.infinity,
+                          height: 45,
+                          child: Center(
+                            child: Text(
+                              'OCORRÊNCIAS - ANUAL',
+                              style: TextStyles.titles(),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      OcorrenciasAnualDonuts(label: label),
+                      const SizedBox(height: 30),
                       FutureBuilder<List<ListModel>>(
                         future: homeBloc.getLists(),
                         builder: (context, snapshot) {
@@ -56,21 +71,31 @@ class _HomePageState extends State<HomePage> {
                             );
                           } else {
                             return SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.55,
-                              child: GridView.builder(
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 4,
-                                  mainAxisSpacing: 10,
-                                  crossAxisSpacing: 8,
-                                ),
+                              height: MediaQuery.of(context).size.height * 0.60,
+                              child: ListView.builder(
                                 itemCount: list?.length ?? 12,
                                 itemBuilder: (context, index) {
-                                  final mes = list?[index]
-                                      .name
-                                      .substring(0, 3)
-                                      .toUpperCase();
-                                  return MesBtn(mes: mes);
+                                  final mes = list?[index].name.toUpperCase();
+                                  return Card(
+                                    elevation: 10,
+                                    child: Column(
+                                      children: [
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          mes.toString(),
+                                          style: TextStyles.titles(),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 15,
+                                          ),
+                                          child: OcorrenciasAnualDonuts(
+                                            label: label,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
                                 },
                               ),
                             );

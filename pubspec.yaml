@@ -9,10 +9,10 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
-  fl_chart: ^0.60.0
   flutter:
     sdk: flutter
   google_fonts: ^4.0.3
+  percent_indicator: ^4.2.2
   provider: ^6.0.5
 
 dev_dependencies:

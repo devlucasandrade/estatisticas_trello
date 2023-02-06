@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextStyles {
-  static TextStyle buttons({
+  static TextStyle titles({
     Color? color,
     FontWeight? fontWeight,
     TextDecoration? textDecoration,
   }) {
     return GoogleFonts.poppins(
-      color: color ?? AppColors.textColors.white,
+      color: color ?? AppColors.textColors.black,
       fontWeight: fontWeight ?? FontWeight.bold,
       decoration: textDecoration,
       fontSize: FonteSize.grande,
@@ -23,7 +23,7 @@ class TextStyles {
   }) {
     return GoogleFonts.poppins(
       color: color ?? AppColors.textColors.black,
-      fontWeight: fontWeight ?? FontWeight.normal,
+      fontWeight: fontWeight ?? FontWeight.bold,
       decoration: textDecoration,
       fontSize: FonteSize.grande,
     );

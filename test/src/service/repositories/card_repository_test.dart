@@ -9,8 +9,9 @@ void main() {
     final response =
         await repository.getCardsOnList('63d32a7ad034775f21c41d33');
     int impressa = 0;
-    int espontanea = 0;
-    int positivo = 0;
+    int digital = 0;
+    int televisao = 0;
+    int radio = 0;
     for (int i = 0; i < response.length; i++) {
       // print('${response[i].id} - ${response[i].name}');
 
@@ -18,21 +19,25 @@ void main() {
       // print('ID: ${cards.id} - Nome: ${cards.name}');
 
       for (int i = 0; i < cards.labels!.length; i++) {
-        print('${cards.labels?[i].name} - ${cards.labels?[i].id}');
+        // print('${cards.labels?[i].name} - ${cards.labels?[i].id}');
 
-        if (cards.labels?[i].name == 'Impressa') {
+        if (cards.labels?[i].id == '63d32a592f36f2348afdde93') {
           impressa += 1;
         }
-        if (cards.labels?[i].name == 'Espontânea') {
-          espontanea += 1;
+        if (cards.labels?[i].id == '63d32a592f36f2348afdde9a') {
+          digital += 1;
         }
-        if (cards.labels?[i].name == 'Positivo') {
-          positivo += 1;
+        if (cards.labels?[i].id == '63d32a592f36f2348afdde9d') {
+          televisao += 1;
+        }
+        if (cards.labels?[i].id == '63d32a592f36f2348afdde9f') {
+          radio += 1;
         }
       }
     }
     print('Impressa - ${impressa}');
-    print('Espontânea - ${espontanea}');
-    print('Positivo - ${positivo}');
+    print('Digital - ${digital}');
+    print('Televisao - ${televisao}');
+    print('Radio - ${radio}');
   });
 }
