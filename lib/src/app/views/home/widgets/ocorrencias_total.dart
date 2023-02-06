@@ -1,4 +1,6 @@
+import 'package:estatisticas_trello/src/app/core/constants/string_constants.dart';
 import 'package:estatisticas_trello/src/app/views/home/bloc/home_bloc.dart';
+import 'package:estatisticas_trello/src/components/text/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class OcorrenciasTotal extends StatefulWidget {
@@ -59,21 +61,33 @@ class _OcorrenciasTotalState extends State<OcorrenciasTotal> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Text('Impressa:'),
-                      Text('${widget.label?.impressa}'),
+                      TextStats(text: widget.label?.labelImpressa),
+                      TextStats(text: widget.label?.impressa.toString()),
                       const SizedBox(width: 10),
-                      const Text('Digital:'),
-                      Text('${widget.label?.digital}'),
+                      TextStats(text: widget.label?.labelDigital),
+                      TextStats(text: widget.label?.digital.toString()),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Text('Televisão:'),
-                      Text('${widget.label?.televisao}'),
+                      Text(
+                        'Televisão:',
+                        style: TextStyles.stats(),
+                      ),
+                      Text(
+                        '${widget.label?.televisao}',
+                        style: TextStyles.stats(),
+                      ),
                       const SizedBox(width: 10),
-                      const Text('Rádio:'),
-                      Text('${widget.label?.radio}'),
+                      Text(
+                        'Rádio:',
+                        style: TextStyles.stats(),
+                      ),
+                      Text(
+                        '${widget.label?.radio}',
+                        style: TextStyles.stats(),
+                      ),
                     ],
                   ),
                 ],
@@ -107,14 +121,32 @@ class _OcorrenciasTotalState extends State<OcorrenciasTotal> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            const Text('Resposta:'),
-                            Text('${widget.label?.respostaImprenssa}'),
+                            Text(
+                              'Resposta:',
+                              style: TextStyles.stats(),
+                            ),
+                            Text(
+                              '${widget.label?.respostaImprenssa}',
+                              style: TextStyles.stats(),
+                            ),
                             const SizedBox(width: 10),
-                            const Text('Espontânea:'),
-                            Text('${widget.label?.espontanea}'),
+                            Text(
+                              'Espontânea:',
+                              style: TextStyles.stats(),
+                            ),
+                            Text(
+                              '${widget.label?.espontanea}',
+                              style: TextStyles.stats(),
+                            ),
                             const SizedBox(width: 10),
-                            const Text('Artigo:'),
-                            Text('${widget.label?.artigo}'),
+                            Text(
+                              'Artigo:',
+                              style: TextStyles.stats(),
+                            ),
+                            Text(
+                              '${widget.label?.artigo}',
+                              style: TextStyles.stats(),
+                            ),
                           ],
                         ),
                       ),
@@ -152,14 +184,32 @@ class _OcorrenciasTotalState extends State<OcorrenciasTotal> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            const Text('Positivo:'),
-                            Text('${widget.label?.positiva}'),
+                            Text(
+                              'Positivo:',
+                              style: TextStyles.stats(),
+                            ),
+                            Text(
+                              '${widget.label?.positiva}',
+                              style: TextStyles.stats(),
+                            ),
                             const SizedBox(width: 10),
-                            const Text('Neutra:'),
-                            Text('${widget.label?.neutra}'),
+                            Text(
+                              'Neutra:',
+                              style: TextStyles.stats(),
+                            ),
+                            Text(
+                              '${widget.label?.neutra}',
+                              style: TextStyles.stats(),
+                            ),
                             const SizedBox(width: 10),
-                            const Text('Negativa:'),
-                            Text('${widget.label?.negativa}'),
+                            Text(
+                              'Negativa:',
+                              style: TextStyles.stats(),
+                            ),
+                            Text(
+                              '${widget.label?.negativa}',
+                              style: TextStyles.stats(),
+                            ),
                           ],
                         ),
                       ),
@@ -169,6 +219,23 @@ class _OcorrenciasTotalState extends State<OcorrenciasTotal> {
               : Container(),
         ],
       ),
+    );
+  }
+}
+
+class TextStats extends StatelessWidget {
+  final String? text;
+
+  const TextStats({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text ?? StringConstants.empty,
+      style: TextStyles.stats(),
     );
   }
 }

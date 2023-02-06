@@ -1,3 +1,4 @@
+import 'package:estatisticas_trello/src/app/core/constants/string_constants.dart';
 import 'package:flutter/material.dart';
 
 class MesBtn extends StatelessWidget {
@@ -22,7 +23,7 @@ class MesBtn extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            mes ?? 'Ops...',
+            mes ?? StringConstants.empty,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 16,

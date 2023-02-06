@@ -1,6 +1,7 @@
 import 'package:estatisticas_trello/src/app/views/home/bloc/home_bloc.dart';
 import 'package:estatisticas_trello/src/app/views/home/widgets/mes_btn.dart';
 import 'package:estatisticas_trello/src/app/views/home/widgets/ocorrencias_total.dart';
+import 'package:estatisticas_trello/src/app/views/home/widgets/pie_chart.dart';
 import 'package:estatisticas_trello/src/model/list_model.dart';
 import 'package:flutter/material.dart';
 
