@@ -13,13 +13,53 @@ class HomeBloc {
   final boardRepository = BoardRepository();
   final labelsRepository = LabelsRepository();
 
+  Future getGeral() async {
+    await getBoardName();
+    await getListsOnBoard();
+    const listId = StringConstants.mesBase;
+    await getLabelsOnCardsOnList(listId);
+    await getTotalLabels();
+  }
+
   Future<BoardModel> getBoardName() async {
     return await Future<BoardModel>.value(boardRepository.getBoard());
   }
 
-  Future<List<ListModel>> getLists() async {
+  Future<List<ListModel>> getListsOnBoard() async {
     final listsOnBoard = await listRepository.getListsOnBoard();
     return listsOnBoard;
+  }
+
+  Future<LabelsInt> getLabelsOnCardsOnList(String listId) async {
+    final cardsOnList = await cardRepository.getCardsOnList(listId);
+    int impressa = 0;
+    int digital = 0;
+    int televisao = 0;
+    int radio = 0;
+    for (int i = 0; i < cardsOnList.length; i++) {
+      final cards = await cardRepository.getCard(cardsOnList[i].id);
+
+      for (int i = 0; i < cards.labels!.length; i++) {
+        if (cards.labels?[i].id == '63d32a592f36f2348afdde93') {
+          impressa += 1;
+        }
+        if (cards.labels?[i].id == '63d32a592f36f2348afdde9a') {
+          digital += 1;
+        }
+        if (cards.labels?[i].id == '63d32a592f36f2348afdde9d') {
+          televisao += 1;
+        }
+        if (cards.labels?[i].id == '63d32a592f36f2348afdde9f') {
+          radio += 1;
+        }
+      }
+    }
+    return LabelsInt(
+      impressa: impressa,
+      digital: digital,
+      televisao: televisao,
+      radio: radio,
+    );
   }
 
   Future<LabelsInt> getTotalLabels() async {
@@ -122,46 +162,46 @@ class HomeBloc {
 
 class LabelsInt {
   int impressa;
-  String labelImpressa;
+  String? labelImpressa;
   int digital;
-  String labelDigital;
+  String? labelDigital;
   int televisao;
-  String labelTelevisao;
+  String? labelTelevisao;
   int radio;
-  String labelRadio;
-  int espontanea;
-  String labelEspontanea;
-  int respostaImprenssa;
-  String labelRespostaImprenssa;
-  int artigo;
-  String labelArtigo;
-  int positiva;
-  String labelPositiva;
-  int neutra;
-  String labelNeutra;
-  int negativa;
-  String labelNegativa;
+  String? labelRadio;
+  int? espontanea;
+  String? labelEspontanea;
+  int? respostaImprenssa;
+  String? labelRespostaImprenssa;
+  int? artigo;
+  String? labelArtigo;
+  int? positiva;
+  String? labelPositiva;
+  int? neutra;
+  String? labelNeutra;
+  int? negativa;
+  String? labelNegativa;
 
   LabelsInt({
     required this.impressa,
-    required this.labelImpressa,
+    this.labelImpressa,
     required this.digital,
-    required this.labelDigital,
+    this.labelDigital,
     required this.televisao,
-    required this.labelTelevisao,
+    this.labelTelevisao,
     required this.radio,
-    required this.labelRadio,
-    required this.espontanea,
-    required this.labelEspontanea,
-    required this.respostaImprenssa,
-    required this.labelRespostaImprenssa,
-    required this.artigo,
-    required this.labelArtigo,
-    required this.positiva,
-    required this.labelPositiva,
-    required this.neutra,
-    required this.labelNeutra,
-    required this.negativa,
-    required this.labelNegativa,
+    this.labelRadio,
+    this.espontanea,
+    this.labelEspontanea,
+    this.respostaImprenssa,
+    this.labelRespostaImprenssa,
+    this.artigo,
+    this.labelArtigo,
+    this.positiva,
+    this.labelPositiva,
+    this.neutra,
+    this.labelNeutra,
+    this.negativa,
+    this.labelNegativa,
   });
 }
