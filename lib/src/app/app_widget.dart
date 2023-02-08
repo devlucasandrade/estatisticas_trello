@@ -1,4 +1,5 @@
 import 'package:estatisticas_trello/src/app/views/home/pages/home_page.dart';
+import 'package:estatisticas_trello/src/app/views/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 
 class AppWidget extends StatelessWidget {
@@ -12,8 +13,9 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      initialRoute: '/home',
+      initialRoute: '/splash',
       routes: {
+        '/splash': (context) => const SplashPage(),
         '/home': (context) => const HomePage(),
       },
     );

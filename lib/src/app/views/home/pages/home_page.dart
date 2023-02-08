@@ -35,13 +35,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0XFF3399ff),
       appBar: AppBar(
+        backgroundColor: const Color(0XFF3399ff),
         centerTitle: true,
         title: FutureBuilder(
           future: homeBloc.getBoardName(),
           builder: (context, snapshot) {
             final board = snapshot.data;
-            return Text(board?.name ?? StringConstants.empty);
+            return Text(
+              board?.name.toUpperCase() ?? StringConstants.empty,
+              style: TextStyles.appBarTitle(),
+            );
           },
         ),
         actions: [
@@ -65,27 +70,33 @@ class _HomePageState extends State<HomePage> {
                   final label = snapshot.data;
                   if (!snapshot.hasData) {
                     return const Center(
-                      child: CircularProgressIndicator(),
+                      child: CircularProgressIndicator(
+                        color: Colors.white,
+                      ),
                     );
                   } else {
                     return Column(
                       children: [
                         Card(
                           elevation: 10,
-                          child: SizedBox(
-                            width: double.infinity,
-                            height: 45,
-                            child: Center(
-                              child: Text(
-                                'OCORRÊNCIAS - ANUAL',
-                                style: TextStyles.titles(),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                width: double.infinity,
+                                height: 45,
+                                child: Center(
+                                  child: Text(
+                                    'OCORRÊNCIAS - ANUAL',
+                                    style: TextStyles.title2(),
+                                  ),
+                                ),
                               ),
-                            ),
+                              OcorrenciasAnualDonuts(label: label),
+                              const SizedBox(height: 10),
+                            ],
                           ),
                         ),
-                        const SizedBox(height: 10),
-                        OcorrenciasAnualDonuts(label: label),
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 20),
                         FutureBuilder<List<ListModel>>(
                           future: homeBloc.getListsOnBoard(),
                           builder: (context, snapshot) {
@@ -109,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                                           const SizedBox(height: 10),
                                           Text(
                                             mes.toString(),
-                                            style: TextStyles.titles(),
+                                            style: TextStyles.title2(),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.symmetric(
