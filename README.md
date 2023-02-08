@@ -24,12 +24,12 @@ A ideia do projeto surgiu da necessidade de apresentar os dados cadastrados no T
 
 ## Funcionalidades
 
-<img alt="Home Page" src="/screenshots/widget-01.png" width="100" />
+<img alt="Home Page" src="/screenshots/widget-01.png" width="200" />
 
 `01:` Widget para listar as ocorrências do ano, fazendo um apanhando geral do Board e tudo o que foi cadastrado nas listas 
 correspondentes aos meses.
 
-<img alt="Home Page" src="/screenshots/widget-02.png" width="100" />
+<img alt="Home Page" src="/screenshots/widget-02.png" width="200" />
 
 `02:` Widget para listar as ocorrências do mês, dessa forma tendo um controle específico mensal, onde serão apresentados apenas os dados cadastrados no referido mês, em forma de lista, para que possam ser acessados todos os meses.
 
