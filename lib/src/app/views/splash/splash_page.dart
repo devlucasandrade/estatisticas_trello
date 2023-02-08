@@ -1,4 +1,5 @@
 import 'package:estatisticas_trello/src/app/core/constants/assets_constants.dart';
+import 'package:estatisticas_trello/src/app/core/constants/string_constants.dart';
 import 'package:estatisticas_trello/src/components/text/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
@@ -54,7 +55,7 @@ class _SplashPageState extends State<SplashPage> {
               FadeAnimation(
                 delay: 2,
                 child: Text(
-                  'ESTATÍTICAS TRELLO',
+                  StringConstants.nomeBoard,
                   style: TextStyles.splash(),
                   textAlign: TextAlign.center,
                 ),

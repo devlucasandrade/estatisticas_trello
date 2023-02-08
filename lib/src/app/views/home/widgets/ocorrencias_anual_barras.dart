@@ -1,9 +1,8 @@
 import 'package:estatisticas_trello/src/app/core/constants/icons_constants.dart';
 import 'package:estatisticas_trello/src/app/core/constants/string_constants.dart';
 import 'package:estatisticas_trello/src/app/views/home/bloc/home_bloc.dart';
-import 'package:estatisticas_trello/src/app/views/home/widgets/text_stats.dart';
+import 'package:estatisticas_trello/src/app/views/home/widgets/bar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class OcorrenciasAnualBarras extends StatelessWidget {
   const OcorrenciasAnualBarras({
@@ -15,8 +14,6 @@ class OcorrenciasAnualBarras extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = 100;
-    double lineHeight = 10;
     final homebloc = HomeBloc();
 
     return FutureBuilder(
@@ -52,58 +49,31 @@ class OcorrenciasAnualBarras extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            LinearPercentIndicator(
-                              lineHeight: lineHeight,
+                            BarWidget(
                               percent: impressa,
-                              width: width,
-                              animation: true,
-                              progressColor: Colors.blue,
-                              backgroundColor: Colors.blue.shade100,
+                              trailing: impressa,
                               leading: IconConstants.newspaper,
-                              trailing: TextStats(
-                                  text:
-                                      '${(impressa * 100).toStringAsFixed(1)}%'),
                             ),
                             const SizedBox(height: 5),
-                            LinearPercentIndicator(
-                              lineHeight: lineHeight,
+                            BarWidget(
                               percent: digital,
-                              width: width,
-                              animation: true,
-                              progressColor: Colors.blue,
-                              backgroundColor: Colors.blue.shade100,
+                              trailing: digital,
                               leading: IconConstants.computer,
-                              trailing: TextStats(
-                                  text:
-                                      '${(digital * 100).toStringAsFixed(1)}%'),
                             ),
                           ],
                         ),
                         Column(
                           children: [
-                            LinearPercentIndicator(
-                              lineHeight: lineHeight,
+                            BarWidget(
                               percent: televisao,
-                              width: width,
-                              animation: true,
-                              progressColor: Colors.blue,
-                              backgroundColor: Colors.blue.shade100,
+                              trailing: televisao,
                               leading: IconConstants.televisao,
-                              trailing: TextStats(
-                                  text:
-                                      '${(televisao * 100).toStringAsFixed(1)}%'),
                             ),
                             const SizedBox(height: 5),
-                            LinearPercentIndicator(
-                              lineHeight: lineHeight,
+                            BarWidget(
                               percent: radio,
-                              width: width,
-                              animation: true,
-                              progressColor: Colors.blue,
-                              backgroundColor: Colors.blue.shade100,
+                              trailing: radio,
                               leading: IconConstants.radio,
-                              trailing: TextStats(
-                                  text: '${(radio * 100).toStringAsFixed(1)}%'),
                             ),
                           ],
                         ),
