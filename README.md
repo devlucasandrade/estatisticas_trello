@@ -69,7 +69,7 @@ flutter pub get
 flutter run
 ```
 
-5. Gere um Token e Key no Trello, através da documentação encontrada aqui: [Trello API](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/). Com eles em mãos, basta criar sa constantes para que as chamadas das API´s possam ser realizadas, conforme a própria documentação do Trello informa.
+5. Gerar Token e Key no Trello, através da documentação encontrada aqui: [Trello API](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/).<br>Com eles em mãos poderá realizar as chamadas para a API.
 
 
 ## Observações
