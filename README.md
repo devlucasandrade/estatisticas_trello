@@ -11,6 +11,8 @@
 
 - [Aplicação](#aplicação)
 
+- [Executando o projeto](#executando-o-projeto)
+
 - [Observações](#observações)
 
 
@@ -43,6 +45,31 @@ correspondentes aos meses.
 <p float="left">
     <img alt="Home Page" src="/screenshots/home_page.png" width="200" />
 </p>
+
+
+## Executando o projeto
+
+1. [Instale o Flutter](https://flutter.dev/docs/get-started/install)
+
+2. Clone este repositório
+
+```
+git clone https://github.com/devlucasandrade/lista_compras
+```
+
+3. Baixe as dependências
+
+```
+flutter pub get
+```
+
+4. Execute
+
+```
+flutter run
+```
+
+5. Gere um Token e Key no Trello, através da documentação encontrada aqui: [Trello API](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/). Com eles em mãos, basta criar sa constantes para que as chamadas das API´s possam ser realizadas, conforme a própria documentação do Trello informa.
 
 
 ## Observações
