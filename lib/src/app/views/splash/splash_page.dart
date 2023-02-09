@@ -1,8 +1,8 @@
-import 'package:estatisticas_trello/src/app/core/constants/assets_constants.dart';
 import 'package:estatisticas_trello/src/app/core/constants/string_constants.dart';
+import 'package:estatisticas_trello/src/app/views/home/pages/home_page.dart';
 import 'package:estatisticas_trello/src/components/text/text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_animations/simple_animations.dart';
+import 'package:lottie/lottie.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -11,17 +11,20 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage> {
+class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
+  late final AnimationController _animationController;
+
   @override
   void initState() {
     super.initState();
-    defineRoute();
+    _animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 800));
   }
 
-  void defineRoute() async {
-    await Future.delayed(const Duration(seconds: 4)).then((_) {
-      Navigator.of(context).pushReplacementNamed('/home');
-    });
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -42,58 +45,22 @@ class _SplashPageState extends State<SplashPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FadeAnimation(
-                delay: 1,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Image.asset(
-                    AssetsConstants.assets.logo,
-                    height: MediaQuery.of(context).size.height * 0.2,
-                  ),
-                ),
-              ),
-              FadeAnimation(
-                delay: 2,
-                child: Text(
-                  StringConstants.nomeBoard,
-                  style: TextStyles.splash(),
-                  textAlign: TextAlign.center,
-                ),
+              Lottie.asset('assets/app/stats.json',
+                  width: 250,
+                  controller: _animationController, onLoaded: (compos) {
+                _animationController
+                  ..duration = compos.duration
+                  ..forward().then((value) => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomePage())));
+              }),
+              Text(
+                StringConstants.nomeBoard,
+                style: TextStyles.splash(),
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class FadeAnimation extends StatelessWidget {
-  final double delay;
-  final Widget child;
-
-  const FadeAnimation({
-    Key? key,
-    required this.delay,
-    required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final tween = MultiTween()
-      ..add('opacity', Tween(begin: 0.0, end: 1.0))
-      ..add('translateY', Tween(begin: 120.0, end: 0.0));
-
-    return PlayAnimation<MultiTweenValues<dynamic>>(
-      delay: Duration(milliseconds: (500) * delay.round()),
-      duration: tween.duration,
-      tween: tween,
-      child: child,
-      builder: (context, child, animation) => Opacity(
-        opacity: animation.get('opacity'),
-        child: Transform.translate(
-          offset: Offset(0, animation.get('translateY')),
-          child: child,
         ),
       ),
     );

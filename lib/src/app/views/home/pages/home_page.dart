@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
 
   Future carregarDados() async {
     keyRefresh.currentState?.show();
-    await Future.delayed(const Duration(milliseconds: 400));
+    await Future.delayed(const Duration(milliseconds: 600));
     setState(() {
       homeBloc.getGeral();
     });
